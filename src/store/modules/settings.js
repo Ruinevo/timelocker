@@ -1,7 +1,12 @@
-import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT } from '@/constants.js';
+import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT, INITIAL_TIME } from '@/constants.js';
+import { getTimes } from '@/utils.js';
+
+const times = getTimes(INITIAL_TIME);
 
 const state = {
-  columns: 5
+  columns: 5,
+  timeStart: '05:00',
+  times
 };
 
 const mutations = {

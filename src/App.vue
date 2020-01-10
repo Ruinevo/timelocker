@@ -38,13 +38,14 @@ export default {
 @import "./assets/styles.scss";
 td {
   border: 1px solid red;
-  width: 100px;
+  width: 14.28%;
   cursor: pointer;
 }
 
 table {
   border-collapse: collapse;
   border-spacing: 0px;
+  width: 100%;
 }
 
 </style>

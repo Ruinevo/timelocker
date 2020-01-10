@@ -6,6 +6,7 @@
   }" class="table" data-items=".item" ref="table">
 
     <tr v-for="(item, i) in times" :key="i">
+      <td v-if="times.length">{{ times[i] }}</td>
       <td v-for="(item, index) in 7" :class="['item', { selected: !!selected[i * 7 + index], selecting: !!selecting[i * 7 + index] }]" :key="index">{{ i }}, {{ index }}</td>
     </tr>
     <div class="selection"></div>
@@ -14,12 +15,12 @@
 
 <script>
 import selectable from 'vue-selectable';
+import { mapState } from 'vuex';
 
 export default {
   name: 'Selectable',
   data () {
     return {
-      times: ['6:00', '7:00', '8:00', '9:00'],
       selected: [],
       selecting: [],
       items: ['abc', 'bcd', 'cde']
@@ -32,7 +33,8 @@ export default {
         if (item) return index;
       });
       return match.filter(item => item);
-    }
+    },
+    ...mapState('settings', ['times'])
   },
   methods: {
     selectedGetter () { return this.selected; },

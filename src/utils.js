@@ -1,6 +1,8 @@
 
 import Vue from 'vue';
 
+import moment from 'moment';
+
 import { uuid } from 'vue-uuid';
 
 export const isArray = function (obj) {
@@ -34,3 +36,15 @@ export const generateFocuses = (count) => {
 }
 
 export const eventBus = new Vue();
+
+export const getTimes = (time) => {
+  const initial = moment(time, 'hh');
+  const result = [];
+  let diff = 30;
+  let next = null;
+  while (next !== time) {
+    next = initial.add(diff, 'minutes').format('HH:mm');
+    result.unshift(next);
+  }
+  return result;
+}
