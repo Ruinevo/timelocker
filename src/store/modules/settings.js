@@ -5,7 +5,7 @@ const times = getTimes(INITIAL_TIME);
 
 const state = {
   columns: 5,
-  timeStart: '05:00',
+  timeStart: '01.01.0000 05:00',
   times
 };
 

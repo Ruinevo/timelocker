@@ -38,13 +38,14 @@ export const generateFocuses = (count) => {
 export const eventBus = new Vue();
 
 export const getTimes = (time) => {
-  const initial = moment(time, 'hh');
-  const result = [];
+  let old = time;
+  let next;
   let diff = 30;
-  let next = null;
+  const result = [];
   while (next !== time) {
-    next = initial.add(diff, 'minutes').format('HH:mm');
-    result.unshift(next);
+    next = moment(old, 'HH:mm').add(diff, 'minutes').format('HH:mm');
+    result.push(`${old} - ${next}`);
+    old = next;
   }
   return result;
 }
