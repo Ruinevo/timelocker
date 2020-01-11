@@ -6,7 +6,8 @@ const times = getTimes(INITIAL_TIME);
 const state = {
   columns: 5,
   timeStart: '01.01.0000 05:00',
-  times
+  times,
+  sidebar: window.innerWidth > 1200
 };
 
 const mutations = {
@@ -15,6 +16,9 @@ const mutations = {
       return false;
     }
     state.columns = val;
+  },
+  toggleSidebar (state) {
+    state.sidebar = !state.sidebar;
   }
 };
 

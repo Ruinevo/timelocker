@@ -1,26 +1,22 @@
 <template>
   <div id="app">
-    <table>
-      <Focuses></Focuses>
-      <Week></Week>
-      <Selectable></Selectable>
-    </table>
+    <div class="container">
+      <HeaderComponent></HeaderComponent>
+      <Sidebar></Sidebar>
+    </div>
   </div>
-    <!-- <input type="text" placeholder="Введите количество колонок" @keyup.enter="$store.commit('settings/updateColumns', $event.target.value)"> -->
 
 </template>
 
 <script>
-import Focuses from '@/components/Focuses.vue';
-import Week from '@/components/Week.vue';
-import Selectable from '@/components/Selectable.vue';
+import Sidebar from '@/components/Sidebar.vue';
+import HeaderComponent from '@/components/HeaderComponent.vue';
 
 export default {
   name: 'app',
   components: {
-    Focuses,
-    Week,
-    Selectable
+    Sidebar,
+    HeaderComponent
   },
   data () {
     return {};
@@ -29,23 +25,18 @@ export default {
 </script>
 
 <style lang="scss">
+@import './assets/styles';
+
 #app {
-  width: 950px;
-  margin: 0 auto;
-  border: 3px solid green;
-  min-height: 500px;
+  display: flex;
+  .container {
+    flex: 1 1 auto;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    max-width: 100%;
+    position: relative;
+  }
 }
-@import "./assets/styles.scss";
-td {
-  border: 1px solid red;
-  width: 14.28%;
-  cursor: pointer;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0px;
-  width: 100%;
-}
-
 </style>
