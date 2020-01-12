@@ -16,9 +16,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-td {
-  width: 100px;
-}
-</style>

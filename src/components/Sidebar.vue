@@ -52,7 +52,7 @@ export default {
 
   .sidebar__header {
     position: relative;
-    background: $primary;
+    background: $primaryGradient;
     padding: 20px;
     min-height: $headerHeight;
     .sidebar__button {

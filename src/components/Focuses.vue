@@ -5,8 +5,8 @@
       </div> -->
 
         <Container @drop="onDrop" orientation="horizontal" behaviour="contain" tag="tr">
-          <td>Примечание</td>
-          <Draggable v-for="(focus, index) in focuses" :key="focus.id" tag="td">
+          <th>Примечание</th>
+          <Draggable v-for="(focus, index) in focuses" :key="focus.id" tag="th">
             <div @click="editValue(index)" class="draggable-item-horizontal">
               {{ focus.data }}
             </div>

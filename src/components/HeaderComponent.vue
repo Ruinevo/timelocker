@@ -1,6 +1,7 @@
 <template>
   <header :class="['header', {active: active && sidebar}]">
       <button class="header__button" @click="toggle"></button>
+      Шапка сайта
   </header>
 </template>
 
@@ -31,7 +32,7 @@ export default {
     padding-left: $sidebarWidth;
   }
   min-height: $headerHeight;
-  background: $secondaryBg;
+  background: $secondaryFont;
   padding-top: 20px;
   padding-bottom: 20px;
   .header__button {

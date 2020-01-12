@@ -40,7 +40,7 @@ export const eventBus = new Vue();
 export const getTimes = (time) => {
   let old = time;
   let next;
-  let diff = 30;
+  let diff = 60;
   const result = [];
   while (next !== time) {
     next = moment(old, 'HH:mm').add(diff, 'minutes').format('HH:mm');

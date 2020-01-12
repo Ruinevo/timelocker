@@ -1,31 +1,37 @@
 <template>
-<table>
-  <tbody v-selectable="{
-    selectedGetter: selectedGetter,
-    selectedSetter: selectedSetter,
-    selectingSetter: selectingSetter
-  }" class="table" data-items=".item" ref="table">
+<div class="selectable">
+  <table class="selectable__table">
+    <Week></Week>
+    <tbody v-selectable="{
+      selectedGetter: selectedGetter,
+      selectedSetter: selectedSetter,
+      selectingSetter: selectingSetter
+    }" class="table" data-items=".item" ref="table">
 
-    <tr v-for="(item, i) in times" :key="i">
-      <td v-if="times.length">{{ times[i] }}</td>
-      <td v-for="(item, index) in 7" :class="['item', { selected: !!selected[i * 7 + index], selecting: !!selecting[i * 7 + index] }]" :key="index">{{ i }}, {{ index }}</td>
-    </tr>
-    <div class="selection"></div>
-  </tbody>
-</table>
+      <tr v-for="(item, i) in times" :key="i">
+        <td v-if="times.length" width="140px">{{ times[i] }}</td>
+        <td v-for="(item, index) in 7" :class="['item', { selected: !!selected[i * 7 + index], selecting: !!selecting[i * 7 + index] }]" :key="index"></td>
+      </tr>
+      <div class="selection"></div>
+    </tbody>
+  </table>
+</div>
 </template>
 
 <script>
 import selectable from 'vue-selectable';
+import Week from '@/components/Week.vue';
 import { mapState } from 'vuex';
 
 export default {
   name: 'Selectable',
+  components: {
+    Week
+  },
   data () {
     return {
       selected: [],
-      selecting: [],
-      items: ['abc', 'bcd', 'cde']
+      selecting: []
     }
   },
   directives: { selectable },
@@ -39,8 +45,8 @@ export default {
     ...mapState('settings', ['times'])
   },
   methods: {
-    selectedGetter () { return this.selected; },
-    selectedSetter (v) {
+    selectedGetter (e) { return this.selected; },
+    selectedSetter (v, b, e) {
       this.selected = v;
       this.$nextTick(() => {
         /** получаем строки, в которых есть хоть одна выбранная ячейка */
@@ -63,10 +69,6 @@ export default {
           const selected = Array.from(curr.cells).filter(cell => cell.classList.contains('selected'));
           return selected[0].rowSpan + acc;
         }, 0);
-
-        if (rowspan % 2 !== 0) {
-          return false;
-        }
 
         let height = lines.reduce((acc, curr) => {
           const selected = Array.from(curr.cells).filter(cell => cell.classList.contains('selected'));
@@ -91,29 +93,40 @@ export default {
 </script>
 
 <style lang="scss">
-.selection {
-  position: absolute;
-  border: 1px dotted #000;
-  z-index: 9999;
-  top: 0;
-  left: 0;
-  cursor: default;
-  display: none;
-}
 
-.selected {
-  background: orange;
-}
+.selectable {
+  overflow-y: scroll;
+  height: calc(100vh - #{$calendarHeight} - #{$headerHeight});
+  .selectable__table {
+    border-collapse: collapse;
+    width: 100%;
+    overflow-y: auto;
+    td {
+      border: 1px solid #f1f1f1;
+      background: #fafafa;
+      padding: 20px;
+      text-align: center;
+      &.selected {
+        color: #fff;
+      }
+    }
+    .selection {
+      position: absolute;
+      border: 1px dotted #000;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      cursor: default;
+      display: none;
+    }
 
-.selecting {
-  background: yellow;
-}
+    .selected {
+      background: $primaryGradient;
+    }
 
-table {
-  border-spacing: 3px;
-
-  td {
-    border: 1px solid #000;
+    .selecting {
+      background: lighten($primary, 30%);
+    }
   }
 }
 

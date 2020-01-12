@@ -3,7 +3,7 @@
     <div class="container">
       <HeaderComponent></HeaderComponent>
       <Sidebar></Sidebar>
-      <Selectable></Selectable>
+      <ContentComponent></ContentComponent>
     </div>
   </div>
 
@@ -12,14 +12,14 @@
 <script>
 import Sidebar from '@/components/Sidebar.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
-import Selectable from '@/components/Selectable.vue';
+import ContentComponent from '@/components/ContentComponent.vue';
 
 export default {
   name: 'app',
   components: {
     Sidebar,
     HeaderComponent,
-    Selectable
+    ContentComponent
   },
   data () {
     return {};
