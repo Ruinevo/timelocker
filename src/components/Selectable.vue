@@ -1,4 +1,5 @@
 <template>
+<table>
   <tbody v-selectable="{
     selectedGetter: selectedGetter,
     selectedSetter: selectedSetter,
@@ -11,6 +12,7 @@
     </tr>
     <div class="selection"></div>
   </tbody>
+</table>
 </template>
 
 <script>
@@ -62,6 +64,10 @@ export default {
           return selected[0].rowSpan + acc;
         }, 0);
 
+        if (rowspan % 2 !== 0) {
+          return false;
+        }
+
         let height = lines.reduce((acc, curr) => {
           const selected = Array.from(curr.cells).filter(cell => cell.classList.contains('selected'));
           return parseFloat(getComputedStyle(selected[0]).height) + acc;
@@ -102,4 +108,13 @@ export default {
 .selecting {
   background: yellow;
 }
+
+table {
+  border-spacing: 3px;
+
+  td {
+    border: 1px solid #000;
+  }
+}
+
 </style>

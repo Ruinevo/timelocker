@@ -1,5 +1,5 @@
 <template>
-  <header :class="['header', {mobile: mobile && sidebar}]">
+  <header :class="['header', {active: active && sidebar}]">
       <button class="header__button" @click="toggle"></button>
   </header>
 </template>
@@ -10,8 +10,8 @@ export default {
   name: 'HeaderComponent',
   computed: {
     ...mapState('settings', ['sidebar']),
-    mobile () {
-      return window.innerWidth <= 1200;
+    active () {
+      return window.innerWidth > 640;
     }
   },
   methods: {
@@ -27,7 +27,7 @@ export default {
   transition: $transition;
   display: flex;
   align-items: center;
-  &.mobile {
+  &.active {
     padding-left: $sidebarWidth;
   }
   min-height: $headerHeight;

@@ -1,6 +1,9 @@
 <template>
   <aside :class="['sidebar', {active: sidebar}]">
-    <h1 class="sidebar__title">Timelocker.</h1>
+    <div class="sidebar__header">
+      <button class="sidebar__button" @click="close">Скрыть</button>
+      <h1 class="sidebar__title">Timelocker.</h1>
+    </div>
     <div class="sidebar__settings settings">
       <h2 class="settings__title">Настройки</h2>
       <ul class="settings__list">
@@ -9,7 +12,6 @@
         <li class="settings__item">Отображать текущее время</li>
       </ul>
     </div>
-    <button class="sidebar__button" @click="close">Скрыть</button>
   </aside>
 </template>
 
@@ -47,16 +49,27 @@ export default {
   &.active {
     transform: translateX(0%);
   }
-  .sidebar__button {
-    display: none;
-    @media screen and (max-width: 640px) {
-      display: block;
-    }
-  }
-  .sidebar__title {
+
+  .sidebar__header {
+    position: relative;
     background: $primary;
     padding: 20px;
     min-height: $headerHeight;
+    .sidebar__button {
+      display: none;
+      @media screen and (max-width: 640px) {
+        display: block;
+        position: absolute;
+        font-size: 0;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 20px;
+        height: 20px;
+        background: url('../assets/images/close.svg') no-repeat 50% 50% transparent;
+        background-size: cover;
+      }
+    }
   }
 }
 
