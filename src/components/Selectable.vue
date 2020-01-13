@@ -1,6 +1,6 @@
 <template>
-<div class="selectable">
-  <table class="selectable__table">
+<div class="selectable" ref="scrollbox">
+  <table v-if="tasks.length" class="selectable__table">
     <Week></Week>
     <tbody v-selectable="{
       selectedGetter: selectedGetter,
@@ -10,7 +10,15 @@
 
       <tr v-for="(item, i) in times" :key="i">
         <td v-if="times.length" width="140px">{{ times[i] }}</td>
-        <td v-for="(item, index) in 7" :class="['item', { selected: !!selected[i * 7 + index], selecting: !!selecting[i * 7 + index] }]" :key="index"></td>
+        <td
+          v-for="(item, index) in days"
+          :class="['item',{ selected: !!tasks[i * days + index], selecting: !!selecting[i * days + index] }]"
+          :key="index"
+          :colspan="tasks[i * days + index].colSpan"
+          :rowspan="tasks[i * days + index].rowSpan"
+          >
+          {{ tasks[i * days + index].data }}
+        </td>
       </tr>
       <div class="selection"></div>
     </tbody>
@@ -19,9 +27,10 @@
 </template>
 
 <script>
-import selectable from 'vue-selectable';
+import * as vueSelectable from 'vue-selectable';
 import Week from '@/components/Week.vue';
 import { mapState } from 'vuex';
+import { WEEK_DAYS } from '@/constants.js';
 
 export default {
   name: 'Selectable',
@@ -31,10 +40,13 @@ export default {
   data () {
     return {
       selected: [],
-      selecting: []
+      selecting: [],
+      days: WEEK_DAYS.length
     }
   },
-  directives: { selectable },
+  directives: {
+    selectable: vueSelectable.default
+  },
   computed: {
     active () {
       const match = this.selected.map((item, index) => {
@@ -42,10 +54,13 @@ export default {
       });
       return match.filter(item => item);
     },
-    ...mapState('settings', ['times'])
+    ...mapState('settings', ['times', 'tasks'])
+  },
+  mounted () {
+    vueSelectable.setOptions(this.$refs.table, { scrollingFrame: this.$refs.scrollbox });
   },
   methods: {
-    selectedGetter (e) { return this.selected; },
+    selectedGetter (e) { return this.tasks; },
     selectedSetter (v, b, e) {
       this.selected = v;
       this.$nextTick(() => {
@@ -76,12 +91,13 @@ export default {
         }, 0);
 
         /** первую ячейку расширяем, остальные удаляем */
-        const [first, ...other] = Array.from(this.$refs.table.querySelectorAll('.selected'));
-        other.forEach(item => item.remove())
-        if (first) {
-          first.rowSpan = rowspan;
-          first.colSpan = colspan;
-          first.height = `${height}px !important`;
+
+        if (this.selected.length) {
+          console.log(this.selected);
+          this.selected = this.selected.shift();
+          this.selected[0].rowSpan = rowspan;
+          this.selected[0].colSpan = colspan;
+          this.selected[0].height = `${height}px !important`;
         }
       });
     },
@@ -96,11 +112,10 @@ export default {
 
 .selectable {
   overflow-y: scroll;
-  height: calc(100vh - #{$calendarHeight} - #{$headerHeight});
+  height: calc(100vh - #{$headerHeight} - #{$calendarHeight });
   .selectable__table {
     border-collapse: collapse;
     width: 100%;
-    overflow-y: auto;
     td {
       border: 1px solid #f1f1f1;
       background: #fafafa;
@@ -120,7 +135,7 @@ export default {
       display: none;
     }
 
-    .selected {
+    .task {
       background: $primaryGradient;
     }
 

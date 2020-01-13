@@ -1,12 +1,17 @@
 import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT, INITIAL_TIME } from '@/constants.js';
-import { getTimes } from '@/utils.js';
+import { getTimes, getTasks } from '@/utils.js';
 
 const times = getTimes(INITIAL_TIME);
+
+const tasks = getTasks(times.length);
+
+console.log(tasks);
 
 const state = {
   columns: 5,
   timeStart: '01.01.0000 05:00',
   times,
+  tasks,
   sidebar: window.innerWidth > 1200
 };
 
