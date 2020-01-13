@@ -19,6 +19,10 @@ button {
 }
 
 ul,
+<<<<<<< HEAD
+=======
+h1,
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
 h2,
 h3,
 p {
@@ -33,12 +37,27 @@ ul {
 body {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
 }
 
 #app {
   font-family: 'Comfortaa', cursive;
   background-color: $mainBackground;
   color: $mainFontColor;
+=======
+  font-size: 16px;
+  overflow: hidden;
+}
+
+#app {
+  font-family: 'BloggerSans', cursive;
+  background-color: $mainBg;
+  color: $mainFont;
+}
+
+h1 {
+  font-size: 24px;;
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
 }
 
 h2 {
@@ -51,6 +70,7 @@ h3 {
 
 
 .medium {
+<<<<<<< HEAD
   font-family: 'Comfortaa Medium', cursive;
 }
 
@@ -65,3 +85,13 @@ h3 {
 .vh-100 {
   height: 100vh;
 }
+=======
+  font-family: 'BloggerSans Medium', cursive;
+}
+
+
+.bold {
+  font-family: 'BloggerSans Bold', cursive;
+}
+
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a

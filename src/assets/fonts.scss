@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @font-face {
 	font-family: 'Comfortaa Light';
 	src: url('~@/assets/fonts/Comfortaa/Comfortaa-Light.ttf');
@@ -12,24 +13,46 @@
 	src: url('~@/assets/fonts/Comfortaa/Comfortaa-Regular.ttf');
 	src: local('Comfortaa'), local('Comfortaa'),
 		url('~@/assets/fonts/Comfortaa/Comfortaa-Regular.ttf') format('truetype');
+=======
+
+@font-face {
+	font-family: 'BloggerSans';
+	src: url('~@/assets/fonts/BloggerSans/BloggerSans-Regular.ttf');
+	src: local('BloggerSans'), local('BloggerSans'),
+		url('~@/assets/fonts/BloggerSans/BloggerSans-Regular.ttf') format('truetype');
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
 	font-weight: normal;
 	font-style: normal;
 }
 
 @font-face {
+<<<<<<< HEAD
 	font-family: 'Comfortaa Bold';
 	src: url('~@/assets/fonts/Comfortaa/Comfortaa-Bold.ttf');
 	src: local('Comfortaa Bold'), local('Comfortaa-Bold'),
 		url('~@/assets/fonts/Comfortaa/Comfortaa-Bold.ttf') format('truetype');
+=======
+	font-family: 'BloggerSans Bold';
+	src: url('~@/assets/fonts/BloggerSans/BloggerSans-Bold.ttf');
+	src: local('BloggerSans Bold'), local('BloggerSans-Bold'),
+		url('~@/assets/fonts/BloggerSans/BloggerSans-Bold.ttf') format('truetype');
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
 	font-weight: bold;
 	font-style: normal;
 }
 
 @font-face {
+<<<<<<< HEAD
 	font-family: 'Comfortaa Medium';
 	src: url('~@/assets/fonts/Comfortaa/Comfortaa-Medium.ttf');
 	src: local('Comfortaa Medium'), local('Comfortaa-Medium'),
 		url('~@/assets/fonts/Comfortaa/Comfortaa-Medium.ttf') format('truetype');
+=======
+	font-family: 'BloggerSans Medium';
+	src: url('~@/assets/fonts/BloggerSans/BloggerSans-Medium.ttf');
+	src: local('BloggerSans Medium'), local('BloggerSans-Medium'),
+		url('~@/assets/fonts/BloggerSans/BloggerSans-Medium.ttf') format('truetype');
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
 	font-weight: 500;
 	font-style: normal;
 }

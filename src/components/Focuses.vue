@@ -5,7 +5,8 @@
       </div> -->
 
         <Container @drop="onDrop" orientation="horizontal" behaviour="contain" tag="tr">
-          <Draggable v-for="(focus, index) in focuses" :key="focus.id" tag="td">
+          <th>Примечание</th>
+          <Draggable v-for="(focus, index) in focuses" :key="focus.id" tag="th">
             <div @click="editValue(index)" class="draggable-item-horizontal">
               {{ focus.data }}
             </div>
@@ -18,7 +19,7 @@ import { mapState } from 'vuex';
 import { Container, Draggable } from 'vue-smooth-dnd';
 
 export default {
-  name: 'Timebox',
+  name: 'Focuses',
   components: {
     Container,
     Draggable
@@ -56,9 +57,12 @@ export default {
 
 <style lang="scss">
 .draggable-item-horizontal {
+<<<<<<< HEAD
   width: 100px;
   border: 1px solid black;
   margin-right: 20px;
+=======
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
   cursor: pointer;
 }
 

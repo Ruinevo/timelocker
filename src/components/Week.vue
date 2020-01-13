@@ -1,5 +1,6 @@
 <template>
     <tr class="week__list">
+      <td>День недели</td>
       <td v-for="day in WEEK_DAYS" :key="day">{{ day }}</td>
     </tr>
 </template>
@@ -15,9 +16,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-td {
-  width: 100px;
-}
-</style>

@@ -1,7 +1,11 @@
 
 import Vue from 'vue';
 
+import moment from 'moment';
+
 import { uuid } from 'vue-uuid';
+
+import { WEEK_DAYS } from '@/constants.js';
 
 export const isArray = function (obj) {
   return Object.prototype.toString.call(obj) === '[object Array]';
@@ -34,3 +38,33 @@ export const generateFocuses = (count) => {
 }
 
 export const eventBus = new Vue();
+<<<<<<< HEAD
+=======
+
+export const getTimes = (time) => {
+  let old = time;
+  let next;
+  let diff = 60;
+  const result = [];
+  while (next !== time) {
+    next = moment(old, 'HH:mm').add(diff, 'minutes').format('HH:mm');
+    result.push(`${old} - ${next}`);
+    old = next;
+  }
+  return result;
+}
+
+export const getTasks = (timesCount) => {
+  let result = [];
+  let tasksLength = timesCount * WEEK_DAYS.length;
+  for (let i = 0; i < tasksLength; i++) {
+    result.push({
+      id: uuid.v1(),
+      colSpan: 1,
+      rowSpan: 1,
+      data: null
+    });
+  }
+  return result;
+}
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
