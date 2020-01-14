@@ -1,4 +1,6 @@
 $transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 $sidebarWidth: 250px;
 $headerHeight: 70px;
-$calendarHeight: 400px;
+$calendarHeight: 100px;
+$columns: 8;
+$columnWidth: calc(100% / #{$columns});

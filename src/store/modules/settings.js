@@ -1,18 +1,13 @@
-import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT, INITIAL_TIME } from '@/constants.js';
-import { getTimes, getTasks } from '@/utils.js';
-
-const times = getTimes(INITIAL_TIME);
-
-const tasks = getTasks(times.length);
-
-console.log(tasks);
+import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT } from '@/constants.js';
 
 const state = {
   columns: 5,
   timeStart: '01.01.0000 05:00',
-  times,
-  tasks,
   sidebar: window.innerWidth > 1200
+};
+
+const getters = {
+  actualTasks: state => state.tasks.filter(item => item.show)
 };
 
 const mutations = {
@@ -30,5 +25,6 @@ const mutations = {
 export default {
   namespaced: true,
   state,
+  getters,
   mutations
 }

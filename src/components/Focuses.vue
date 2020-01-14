@@ -57,6 +57,12 @@ export default {
 
 <style lang="scss">
 .draggable-item-horizontal {
+<<<<<<< HEAD
+  width: 100px;
+  border: 1px solid black;
+  margin-right: 20px;
+=======
+>>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
   cursor: pointer;
 }
 
