@@ -19,10 +19,7 @@ button {
 }
 
 ul,
-<<<<<<< HEAD
-=======
 h1,
->>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
 h2,
 h3,
 p {
@@ -37,14 +34,6 @@ ul {
 body {
   margin: 0;
   padding: 0;
-<<<<<<< HEAD
-}
-
-#app {
-  font-family: 'Comfortaa', cursive;
-  background-color: $mainBackground;
-  color: $mainFontColor;
-=======
   font-size: 16px;
   overflow: hidden;
 }
@@ -57,7 +46,6 @@ body {
 
 h1 {
   font-size: 24px;;
->>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
 }
 
 h2 {
@@ -85,13 +73,20 @@ h3 {
 .vh-100 {
   height: 100vh;
 }
-=======
-  font-family: 'BloggerSans Medium', cursive;
-}
 
 
 .bold {
   font-family: 'BloggerSans Bold', cursive;
 }
 
->>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
+.item {
+  border: 1px solid #f1f1f1;
+  background: #fafafa;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  &.task {
+    color: #fff;
+    background: $primary;
+  }
+}

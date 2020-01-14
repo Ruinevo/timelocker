@@ -56,14 +56,19 @@ export const getTimes = (time) => {
 
 export const getTasks = (timesCount) => {
   let result = [];
-  let tasksLength = timesCount * WEEK_DAYS.length;
-  for (let i = 0; i < tasksLength; i++) {
-    result.push({
-      id: uuid.v1(),
-      colSpan: 1,
-      rowSpan: 1,
-      data: null
-    });
+  for (let i = 0; i < WEEK_DAYS.length; i++) {
+    let day = [];
+    for (let j = 0; j < timesCount; j++) {
+      day.push({
+        id: uuid.v1(),
+        data: 123,
+        selected: false,
+        show: true,
+        height: 'auto',
+        task: false
+      });
+    }
+    result.push(day);
   }
   return result;
 }

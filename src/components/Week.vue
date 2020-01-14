@@ -1,8 +1,8 @@
 <template>
-    <tr class="week__list">
-      <td>День недели</td>
-      <td v-for="day in WEEK_DAYS" :key="day">{{ day }}</td>
-    </tr>
+    <ul class="week__list">
+      <li class="week__item item">День недели</li>
+      <li class="week__item item" v-for="day in WEEK_DAYS" :key="day">{{ day }}</li>
+    </ul>
 </template>
 
 <script>
@@ -16,3 +16,12 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.week__list {
+  .week__item {
+    display: inline-block;
+    width: $columnWidth;
+  }
+}
+</style>
