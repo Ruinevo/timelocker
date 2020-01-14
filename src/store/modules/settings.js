@@ -3,7 +3,10 @@ import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT } from '@/constants.js';
 const state = {
   columns: 5,
   timeStart: '01.01.0000 05:00',
-  sidebar: window.innerWidth > 1200
+  sidebar: window.innerWidth > 1200,
+  showModal: false,
+  start: null,
+  stop: null
 };
 
 const getters = {
@@ -11,14 +14,22 @@ const getters = {
 };
 
 const mutations = {
-  updateColumns(state, val) {
+  updateColumns (state, val) {
     if (val <= MIN_COLUMNS_COUNT || val > MAX_COLUMNS_COUNT) {
       return false;
     }
     state.columns = val;
   },
-  toggleSidebar(state) {
+  toggleSidebar (state) {
     state.sidebar = !state.sidebar;
+  },
+  showModal (state, { start, stop }) {
+    state.start = start;
+    state.stop = stop;
+    state.showModal = true;
+  },
+  closeModal (state) {
+    state.showModal = false;
   }
 };
 

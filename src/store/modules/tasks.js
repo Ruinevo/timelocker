@@ -10,14 +10,25 @@ const state = {
   tasks
 };
 const mutations = {
-  addTask (state, { active, lineIndex, height }) {
+  addTask (state, { active, columnIndex, data }) {
     const [first, ...other] = active;
-    const task = state.tasks[lineIndex][first];
-    task.height = height;
-    task.task = true;
+    const line = state.tasks[columnIndex];
+    const task = line[first];
+    task.data = data;
+    task.hidden = [];
     other.forEach(item => {
-      state.tasks[lineIndex][item].show = false;
+      task.hidden.push(item);
+      line[item].show = false;
     });
+  },
+  deleteTask (state, { id, columnIndex }) {
+    const line = state.tasks[columnIndex];
+    const task = line.find(item => item.id === id);
+    task.hidden.forEach(item => {
+      line[item].show = true;
+    });
+    task.height = '60px';
+    task.data = {};
   }
 };
 

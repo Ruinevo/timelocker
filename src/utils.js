@@ -59,11 +59,8 @@ export const getTasks = (timesCount) => {
     for (let j = 0; j < timesCount; j++) {
       day.push({
         id: uuid.v1(),
-        data: 123,
-        selected: false,
-        show: true,
-        height: 'auto',
-        task: false
+        data: '',
+        show: true
       });
     }
     result.push(day);

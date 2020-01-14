@@ -5,10 +5,13 @@ import store from './store';
 import moment from 'moment';
 import VueMoment from 'vue-moment';
 
+import Transitions from 'vue2-transitions'
+
 Vue.config.productionTip = false;
 
 moment.locale('ru');
 moment.suppressDeprecationWarnings = true;
+Vue.use(Transitions)
 
 Vue.use(VueMoment, {
   moment

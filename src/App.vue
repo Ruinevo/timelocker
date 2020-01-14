@@ -4,6 +4,7 @@
       <HeaderComponent></HeaderComponent>
       <Sidebar></Sidebar>
       <ContentComponent></ContentComponent>
+      <ModalForm></ModalForm>
     </div>
   </div>
 
@@ -13,13 +14,15 @@
 import Sidebar from '@/components/Sidebar.vue';
 import HeaderComponent from '@/components/HeaderComponent.vue';
 import ContentComponent from '@/components/ContentComponent.vue';
+import ModalForm from '@/components/ModalForm.vue';
 
 export default {
   name: 'app',
   components: {
     Sidebar,
     HeaderComponent,
-    ContentComponent
+    ContentComponent,
+    ModalForm
   },
   data () {
     return {};
