@@ -38,8 +38,6 @@ export const generateFocuses = (count) => {
 }
 
 export const eventBus = new Vue();
-<<<<<<< HEAD
-=======
 
 export const getTimes = (time) => {
   let old = time;
@@ -72,4 +70,3 @@ export const getTasks = (timesCount) => {
   }
   return result;
 }
->>>>>>> 97b5a724b3f0660a643d1630995318a4495e5a7a
