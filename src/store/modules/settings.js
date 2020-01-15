@@ -1,12 +1,14 @@
-import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT } from '@/constants.js';
+import { MAX_COLUMNS_COUNT, MIN_COLUMNS_COUNT, START_OF_WORK_TIME, INITIAL_INTERVAL } from '@/constants.js';
 
 const state = {
   columns: 5,
-  timeStart: '01.01.0000 05:00',
   sidebar: window.innerWidth > 1200,
   showModal: false,
   start: null,
-  stop: null
+  stop: null,
+  startOfWork: START_OF_WORK_TIME,
+  intervalValue: INITIAL_INTERVAL,
+  showInitialTime: true
 };
 
 const getters = {
@@ -30,6 +32,15 @@ const mutations = {
   },
   closeModal (state) {
     state.showModal = false;
+  },
+  setStartOfWorkTime (state, value) {
+    state.startOfWork = value;
+  },
+  setIntervalValue (state, value) {
+    state.intervalValue = value;
+  },
+  toggleShowInitialTime (state, value) {
+    state.showInitialTime = value;
   }
 };
 

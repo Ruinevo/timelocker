@@ -6,4 +6,10 @@ export const WEEK_DAYS = ['Понедельник', 'Вторник', 'Сред�
 
 export const MAX_COLUMNS_COUNT = WEEK_DAYS.length;
 
-export const INITIAL_TIME = '05:00';
+export const START_OF_WORK_TIME = '7:30';
+
+export const INITIAL_INTERVAL = 60;
+
+export const TASK_HEIGHT = '100';
+
+export const MINUTES_IN_DAY = 1440;

@@ -5,7 +5,7 @@ import moment from 'moment';
 
 import { uuid } from 'vue-uuid';
 
-import { WEEK_DAYS } from '@/constants.js';
+import { WEEK_DAYS, MINUTES_IN_DAY } from '@/constants.js';
 
 export const isArray = function (obj) {
   return Object.prototype.toString.call(obj) === '[object Array]';
@@ -39,15 +39,17 @@ export const generateFocuses = (count) => {
 
 export const eventBus = new Vue();
 
-export const getTimes = (time) => {
-  let old = time;
-  let next;
-  let diff = 60;
+export const getTimes = (time, interval) => {
+  const timesLength = Math.trunc(MINUTES_IN_DAY / interval);
+  const [ h, m ] = time.split(':');
+  const startWork = moment().set({ h, m }).format('HH:mm');
+  let startInterval = startWork;
+  let stopInterval;
   const result = [];
-  while (next !== time) {
-    next = moment(old, 'HH:mm').add(diff, 'minutes').format('HH:mm');
-    result.push(`${old} - ${next}`);
-    old = next;
+  for (let i = 0; i < timesLength; i++) {
+    stopInterval = moment(startInterval, 'HH:mm').add(interval, 'minutes').format('HH:mm');
+    result.push(`${startInterval} - ${stopInterval}`);
+    startInterval = stopInterval;
   }
   return result;
 }
@@ -67,3 +69,9 @@ export const getTasks = (timesCount) => {
   }
   return result;
 }
+
+export const getTimeFromMins = (mins) => {
+  let hours = Math.trunc(mins / 60);
+  let minutes = mins % 60;
+  return hours + ':' + minutes;
+};

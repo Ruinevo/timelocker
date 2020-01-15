@@ -1,6 +1,5 @@
 <template>
   <main :class="['content', {active: active && sidebar}]">
-      <Calendar></Calendar>
       <Selectable></Selectable>
   </main>
 </template>
@@ -8,12 +7,10 @@
 <script>
 import { mapState } from 'vuex';
 import Selectable from '@/components/Selectable.vue';
-import Calendar from '@/components/Calendar.vue';
 export default {
   name: 'ContentComponent',
   components: {
-    Selectable,
-    Calendar
+    Selectable
   },
   computed: {
     ...mapState('settings', ['sidebar']),

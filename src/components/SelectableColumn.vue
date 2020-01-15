@@ -10,18 +10,23 @@
         :data-box="`.selectbox${columnIndex}`"
       >
         <perfect-scrollbar
+          tag="li"
+          :scrollXMarginOffset="10"
           v-for="(item, index) in tasks[columnIndex]"
           :class="['item', `item${columnIndex}`,{ selected: !!selected[index], selecting: !!selecting[index], task: Object.keys(item.data).length }]"
           :key="item.id"
           v-show="item.show"
           :style="{ height: `${item.height}px` }"
           >
-          {{ item.data.taskName }}
-          {{ item.data.taskDescription }}
-          {{ item.data.start }}
-          {{ item.data.stop }}
+
+          <div class="item__content" v-if="Object.keys(item.data).length">
+            <p class="item__time">{{ item.data.start }} - {{ item.data.stop }}</p>
+            <p class="item__name">{{ item.data.taskName }}</p>
+            <p class="item__description">{{ item.data.taskDescription }}</p>
+
+          </div>
           <button class="item__close" @mousedown.stop v-if="Object.keys(item.data).length" @click="deleteTask(item.id, columnIndex)">Удалить</button>
-        </perfect-scrollbar>>
+        </perfect-scrollbar>
         <div :class="['selectbox', `selectbox${columnIndex}`]"></div>
       </ul>
 
@@ -99,43 +104,55 @@ export default {
       const data = {
         taskName,
         taskDescription,
-        height,
         start: this.start,
         stop: this.stop
       };
       this.$store.commit('tasks/addTask', {
         active: this.active,
         columnIndex: this.columnIndex,
-        data
+        data,
+        height
       });
       this.currentLine = false;
     })
+  },
+  watch: {
+    times () {
+      this.$nextTick(() => selectable.setSelectableItems(this.$refs.column, `.item${this.columnIndex}`));
+    }
   }
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 .column {
   width: $columnWidth;
   position: relative;
 }
 
-.selecting {
-  background: lighten($primary, 30%);
-}
-
 .item__close {
   display: block;
   position: absolute;
   font-size: 0;
-  right: 8px;
+  right: 5px;
   top: 5px;
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   background: url('../assets/images/close.svg') no-repeat 50% 50% transparent;
   background-size: cover;
   cursor: pointer;
+}
+
+.item__time {
+  padding-left: 20px;
+  background: url('../assets/images/clock.svg') no-repeat 0% 50%;
+  background-size: contain;
+  margin-bottom: 5px;
+}
+.item__description {
+  font-size: 12px;
+  margin-top: 5px;
 }
 
 .selectbox {
@@ -148,16 +165,16 @@ export default {
   display: none;
 }
 
-.ps {
-  overflow-y: scroll;
-  height: 100px;
-  .ps__thumb-y,
-  .ps__rail-y:hover > .ps__thumb-y,
-  .ps__rail-y:focus > .ps__thumb-y,
-  .ps__rail-y.ps--clicking
-  .ps__rail-y {
-    background-color: $primary;
-    width: 3px;
+.column {
+  .ps {
+    overflow-y: scroll;
+    .ps__thumb-y, .ps .ps__rail-y:hover > .ps__thumb-y, .ps .ps__rail-y:focus > .ps__thumb-y, .ps .ps__rail-y.ps--clicking .ps__thumb-y {
+      background-color: $mainBg;
+      width: 3px;
+    }
+    .ps__rail-y {
+      background: transparent;
+    }
   }
 }
 
