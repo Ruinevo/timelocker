@@ -24,7 +24,7 @@
         "vue2-timepicker": "1.0.7",
         "vue2-transitions": "0.3.0",
         "vuex": "^3.1.2",
-        "yarn": "1.21.1"
+        "yarn": "1.22.0"
     },
     "devDependencies": {
         "@vue/cli-plugin-babel": "^4.1.0",
