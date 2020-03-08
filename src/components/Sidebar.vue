@@ -147,13 +147,16 @@ export default {
   .clear-btn {
     display: none;
   }
-  .display-time {
+  input.display-time {
     width: 100%;
+    height: auto;
+    padding: 0;
     background: transparent;
     border: none;
-    color: $secondaryFont;
+    color: #fafafa;
     font-size: 16px;
-    font-family: $blogger;
+    font-family: BloggerSans,cursive;
+    cursor: pointer;
     cursor: pointer;
     &::placeholder {
       color: $secondaryFont;

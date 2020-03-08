@@ -14,8 +14,10 @@ const state = {
 
 const getters = {
   currentTask (state) {
-    const index = moment().day() - 1;
+    let index = moment().day();
+    if (index === 0) index = 6;
     const now = moment();
+    if (!state.tasks[index]) return;
     return state.tasks[index].find(task => {
       if (task.data.stop) {
         const [ h, m ] = task.data.stop.split(':');
